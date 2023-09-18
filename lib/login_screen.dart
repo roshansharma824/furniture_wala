@@ -20,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
       "^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\$");
   var _isValid = false;
 
+  var _isLoading = false;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -34,8 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<SendOtp> sendOtp() async {
     var url = Uri.parse('${baseUrl}SendOtp');
-
-    print(_phone);
 
     final response = await http.post(url, body: {"phone": _phone});
 
@@ -118,7 +118,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
                 ElevatedButton(
-                    onPressed: () async {
+                  onPressed: () async {
+                    if (_isValid) {
+                      setState(() {
+                        _isLoading = true;
+                      });
                       await sendOtp();
 
                       if (mounted) {
@@ -130,31 +134,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                   )),
                         );
                       }
-                    },
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.resolveWith((states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Size(
-                              MediaQuery.of(context).size.width * 0.85, 55);
-                        }
+                    }
+                  },
+                  style: ButtonStyle(
+                    minimumSize: MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.pressed)) {
                         return Size(
-                            MediaQuery.of(context).size.width * 0.8, 50);
-                      }),
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith((states) {
-                        // If the button is pressed, return green, otherwise blue
-                        if (states.contains(MaterialState.pressed)) {
-                          return _isValid
-                              ? Colors.greenAccent
-                              : Colors.redAccent;
-                        }
-                        return _isValid ? Colors.black : Colors.black26;
-                      }),
-                    ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    ))
+                            MediaQuery.of(context).size.width * 0.85, 55);
+                      }
+                      return Size(MediaQuery.of(context).size.width * 0.8, 50);
+                    }),
+                    backgroundColor:
+                        MaterialStateProperty.resolveWith((states) {
+                      // If the button is pressed, return green, otherwise blue
+                      if (states.contains(MaterialState.pressed)) {
+                        return _isValid ? Colors.greenAccent : Colors.redAccent;
+                      }
+                      return _isValid ? Colors.black : Colors.black26;
+                    }),
+                  ),
+                  child: _isLoading
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const Text(
+                          'Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                )
               ],
             ),
           )
