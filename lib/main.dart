@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
-import 'package:furniture_wala/login_screen.dart';
+import 'package:furniture_wala/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());

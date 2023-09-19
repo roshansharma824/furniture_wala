@@ -5,8 +5,8 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:furniture_wala/data_class/verify_otp_response.dart';
 import 'package:http/http.dart' as http;
 
-import 'constants/text_strings.dart';
-import 'main.dart';
+import '../constants/text_strings.dart';
+import '../main.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phone;
@@ -22,6 +22,7 @@ class _OtpScreenState extends State<OtpScreen> {
   var _otp = "";
 
   var _isValid = false;
+  var _isLoading = false;
 
   @override
   void dispose() {
@@ -145,14 +146,19 @@ class _OtpScreenState extends State<OtpScreen> {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                     onPressed: () async {
-                      await verifyOtp();
+                      if (_isValid) {
+                        setState(() {
+                          _isLoading = true;
+                        });
+                        await verifyOtp();
 
-                      if (mounted) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyApp()),
-                        );
+                        if (mounted) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MyApp()),
+                          );
+                        }
                       }
                     },
                     style: ButtonStyle(
@@ -175,10 +181,14 @@ class _OtpScreenState extends State<OtpScreen> {
                         return _isValid ? Colors.black : Colors.black26;
                       }),
                     ),
-                    child: const Text(
-                      'Verify',
-                      style: TextStyle(color: Colors.white),
-                    )),
+                    child: _isLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text(
+                            'Verify',
+                            style: TextStyle(color: Colors.white),
+                          )),
               ),
             ),
           ],

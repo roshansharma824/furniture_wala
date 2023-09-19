@@ -1,9 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
 import 'package:furniture_wala/data_class/send_otp.dart';
-import 'package:furniture_wala/otp_screen.dart';
+import 'package:furniture_wala/screens/otp_screen.dart';
 import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
@@ -44,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // then parse the JSON.
       SendOtp sendOtp = SendOtp.fromJson(json.decode(response.body));
       print(sendOtp.toJson());
+      _isLoading = false;
       return sendOtp;
     } else {
       // If the server did not return a 201 OK response,
@@ -132,7 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               builder: (context) => OtpScreen(
                                     phone: _phone,
                                   )),
-                        );
+                        ).then((value) => setState(() {
+                              _isLoading = false;
+                            }));
                       }
                     }
                   },
