@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
+import 'package:furniture_wala/screens/home_screen.dart';
 import 'package:furniture_wala/screens/login_screen.dart';
 
 void main() {
@@ -143,16 +144,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             )),
-        const Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(16, 64, 16, 64),
+        Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 64, 16, 64),
           child: Align(
-            alignment: Alignment.topRight,
-            child: Text('Skip',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 20)),
-          ),
+              alignment: Alignment.topRight,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
+                child: const Text('Skip',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20)),
+              )),
         )
       ],
     ));
