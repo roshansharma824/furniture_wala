@@ -48,7 +48,9 @@ class CategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.24,
+      width: double.infinity,
       child: GridView.count(
         // Create a grid with 2 columns. If you change the scrollDirection to
         // horizontal, this would produce 2 rows.

@@ -40,130 +40,130 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Container(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 16,
-            ),
-            const SearchBarWidget(),
-            const SizedBox(
-              height: 16,
-            ),
-            const Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Special Offers',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                  ),
-                  Text('See All'),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CarouselSlider(
-              carouselController: _controller,
-              options: CarouselOptions(
-                  aspectRatio: 16 / 7,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
-              items: [1, 2, 3, 4, 5].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                        color: Colors.black12.withOpacity(0.1),
-                      ),
-                      foregroundDecoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                        image: DecorationImage(
-                          alignment: Alignment.bottomRight,
-                          fit: BoxFit.fitHeight,
-                          image: Image.asset('assets/images/pngegg.png').image,
+              const SearchBarWidget(),
+              const SizedBox(
+                height: 16,
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                child: getTopTitle('Special Offers', 'See All'),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CarouselSlider(
+                carouselController: _controller,
+                options: CarouselOptions(
+                    aspectRatio: 16 / 7,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    }),
+                items: [1, 2, 3, 4, 5].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(16)),
+                          color: Colors.black12.withOpacity(0.1),
                         ),
-                      ),
-                      child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16, 24, 140, 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${i * 10}%',
-                                style: const TextStyle(
-                                  fontSize: 32.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                        foregroundDecoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(16)),
+                          image: DecorationImage(
+                            alignment: Alignment.bottomRight,
+                            fit: BoxFit.fitHeight,
+                            image:
+                                Image.asset('assets/images/pngegg.png').image,
+                          ),
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                16, 24, 140, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${i * 10}%',
+                                  style: const TextStyle(
+                                    fontSize: 32.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                'Today\'s  Special!',
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              // Fixme: A RenderFlex overflowed by 2.3 pixels on the bottom
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                'Get discount for every order, only valid for today',
-                                maxLines: 2,
-                                style: TextStyle(
-                                    fontSize: 12.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          )),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: imgList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  onTap: () => _controller.animateToPage(entry.key),
-                  child: Container(
-                    width: 6.0,
-                    height: 6.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black)
-                            .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                  ),
-                );
-              }).toList(),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const CategoriesWidget(),
-          ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  'Today\'s  Special!',
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                // Fixme: A RenderFlex overflowed by 2.3 pixels on the bottom
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  'Get discount for every order, only valid for today',
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            )),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: imgList.asMap().entries.map((entry) {
+                  return GestureDetector(
+                    onTap: () => _controller.animateToPage(entry.key),
+                    child: Container(
+                      width: 6.0,
+                      height: 6.0,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 4.0),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: (Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black)
+                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                    ),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const CategoriesWidget(),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                child: getTopTitle('Most Popular', 'See All'),
+              ),
+            ],
+          ),
         ),
       ),
       drawer: Drawer(
@@ -277,3 +277,16 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 final List<String> imgList = ['1', '2', '3', '4', '5'];
+
+Widget getTopTitle(String left, String right) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        left,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+      ),
+      Text(right),
+    ],
+  );
+}
