@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../common_widgets/categories_view.dart';
 import '../common_widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -177,27 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 16,
             ),
-            Expanded(
-              child: GridView.count(
-                // Create a grid with 2 columns. If you change the scrollDirection to
-                // horizontal, this would produce 2 rows.
-                crossAxisCount: 4,
-
-                // Generate 100 Widgets that display their index in the List
-                children: List.generate(8, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.black12.withOpacity(0.1),
-                      ),
-                      child: const Icon(Icons.chair_rounded),
-                    ),
-                  );
-                }),
-              ),
-            ),
+            const CategoriesWidget(),
           ],
         ),
       ),
