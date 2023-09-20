@@ -57,14 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            SearchBarWidget(),
-            SizedBox(
+            const SearchBarWidget(),
+            const SizedBox(
               height: 16,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             CarouselSlider(
@@ -111,44 +111,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: Image.asset('assets/images/pngegg.png').image,
                         ),
                       ),
-                      child: Align(
-                        child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 16, 140, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${i * 10}%',
-                                  style: TextStyle(
-                                    fontSize: 32.0,
+                      child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16, 16, 140, 0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${i * 10}%',
+                                style: const TextStyle(
+                                  fontSize: 32.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Text(
+                                'Today\'s  Special!',
+                                style: TextStyle(
+                                    fontSize: 16.0,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Today\'s  Special!',
-                                  style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Get discount for every order, only valid for today',
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            )),
-                      ),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Text(
+                                'Get discount for every order, only valid for today',
+                                style: TextStyle(
+                                    fontSize: 12.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          )),
                     );
                   },
                 );
