@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16, 16, 140, 0),
+                              16, 24, 140, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -140,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const Text(
                                 'Get discount for every order, only valid for today',
+                                maxLines: 2,
                                 style: TextStyle(
                                     fontSize: 12.0,
                                     color: Colors.black,
@@ -160,8 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     width: 6.0,
                     height: 6.0,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 4.0),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
