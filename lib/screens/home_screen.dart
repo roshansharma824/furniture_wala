@@ -15,22 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -192,13 +176,19 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.black,
               ),
-              child: Text('Drawer Header'),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Home'),
+              title: const Text('Home',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 0,
+              selectedColor: Colors.black,
+              textColor: Colors.black12.withOpacity(0.5),
               onTap: () {
                 // Update the state of the app
                 _onItemTapped(0);
@@ -207,8 +197,11 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Business'),
+              title: const Text('Cart',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 1,
+              selectedColor: Colors.black,
+              textColor: Colors.black12.withOpacity(0.5),
               onTap: () {
                 // Update the state of the app
                 _onItemTapped(1);
@@ -217,8 +210,11 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('School'),
+              title: const Text('Order',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 2,
+              selectedColor: Colors.black,
+              textColor: Colors.black12.withOpacity(0.5),
               onTap: () {
                 // Update the state of the app
                 _onItemTapped(2);
@@ -226,8 +222,55 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              title: const Text('Account',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+              selected: _selectedIndex == 3,
+              selectedColor: Colors.black,
+              textColor: Colors.black12.withOpacity(0.5),
+              onTap: () {
+                // Update the state of the app
+                _onItemTapped(3);
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 12,
+        showUnselectedLabels: true,
+        elevation: 24,
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_rounded),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/images/cart.png'),
+            ),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/images/order.png'),
+            ),
+            label: 'Order',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/images/account.png'),
+            ),
+            label: 'Account',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black12.withOpacity(0.3),
+        onTap: _onItemTapped,
       ),
     );
   }
