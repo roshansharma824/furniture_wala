@@ -135,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w600),
                               ),
+                              // Fixme: A RenderFlex overflowed by 2.3 pixels on the bottom
                               const SizedBox(
                                 height: 10,
                               ),
@@ -172,6 +173,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               }).toList(),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Expanded(
+              child: GridView.count(
+                // Create a grid with 2 columns. If you change the scrollDirection to
+                // horizontal, this would produce 2 rows.
+                crossAxisCount: 4,
+
+                // Generate 100 Widgets that display their index in the List
+                children: List.generate(8, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.black12.withOpacity(0.1),
+                      ),
+                      child: const Icon(Icons.chair_rounded),
+                    ),
+                  );
+                }),
+              ),
             ),
           ],
         ),

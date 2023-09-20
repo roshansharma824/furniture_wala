@@ -1,7 +1,7 @@
 // Search Page
 import 'package:flutter/material.dart';
 
-import '../custom_icons_icons.dart';
+import 'custom_icons_icons.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({Key? key}) : super(key: key);
