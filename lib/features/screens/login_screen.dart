@@ -96,7 +96,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       // height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (val) {},
                         onChanged: (String newText) => {
                           _isValid = _phoneRegex.hasMatch(_controller.text),
                           _phone = _controller.text,
