@@ -9,6 +9,7 @@ import '../../constants/text_strings.dart';
 import '../../main.dart';
 
 class OtpScreen extends StatefulWidget {
+  static const String routeName = '/otp-screen';
   final String phone;
 
   const OtpScreen({required this.phone, Key? key}) : super(key: key);

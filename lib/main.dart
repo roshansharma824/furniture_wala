@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
+import 'package:furniture_wala/router.dart';
 
 import 'features/screens/home_screen.dart';
 import 'features/screens/login_screen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
+      onGenerateRoute: (settings) => generateRoute(settings),
       home: const MyHomePage(title: 'Furniture Wala'),
     );
   }
