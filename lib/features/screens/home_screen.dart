@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
 
-import '../common_widgets/categories_view.dart';
-import '../common_widgets/search_bar.dart';
+import '../widgets/categories_view.dart';
+import '../widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

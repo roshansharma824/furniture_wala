@@ -4,8 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:furniture_wala/constants/text_strings.dart';
 import 'package:furniture_wala/data_class/send_otp.dart';
-import 'package:furniture_wala/screens/otp_screen.dart';
 import 'package:http/http.dart' as http;
+
+import 'otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

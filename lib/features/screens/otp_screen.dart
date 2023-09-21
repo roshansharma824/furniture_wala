@@ -5,8 +5,8 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:furniture_wala/data_class/verify_otp_response.dart';
 import 'package:http/http.dart' as http;
 
-import '../constants/text_strings.dart';
-import '../main.dart';
+import '../../constants/text_strings.dart';
+import '../../main.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phone;
