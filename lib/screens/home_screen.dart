@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_wala/constants/text_strings.dart';
 
 import '../common_widgets/categories_view.dart';
 import '../common_widgets/search_bar.dart';
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
   int _selectedIndex = 0;
+  int? _value = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello World'),
+        title: const Text('Hello World'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -62,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 carouselController: _controller,
                 options: CarouselOptions(
                     aspectRatio: 16 / 7,
-                    autoPlay: true,
+                    autoPlay: false,
                     enlargeCenterPage: true,
                     onPageChanged: (index, reason) {
                       setState(() {
@@ -159,9 +161,49 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const CategoriesWidget(),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 child: getTopTitle('Most Popular', 'See All'),
               ),
+              Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Wrap(
+                          spacing: 12,
+                          children: List.generate(
+                            mostPopularCategoriesList.length,
+                            (int index) {
+                              // choice chip allow us to
+                              // set its properties.
+                              return RawChip(
+                                showCheckmark: false,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                label: Text(
+                                  mostPopularCategoriesList[index],
+                                  style: TextStyle(
+                                      color: _value == index
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                selectedColor: Colors.black,
+                                selected: _value == index,
+                                onSelected: (bool selected) {
+                                  setState(() {
+                                    _value = selected ? index : null;
+                                  });
+                                },
+                              );
+                            },
+                          ).toList(),
+                        )
+                      ],
+                    ),
+                  )),
             ],
           ),
         ),

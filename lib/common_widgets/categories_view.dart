@@ -1,47 +1,6 @@
 import 'package:flutter/material.dart';
 
-final List<Map<String, ImageIcon>> _categoriesList = [
-  {
-    'Sofa': const ImageIcon(
-      AssetImage('assets/images/sofa.png'),
-    )
-  },
-  {
-    'Chair': const ImageIcon(
-      AssetImage('assets/images/chair.png'),
-    )
-  },
-  {
-    'Table': const ImageIcon(
-      AssetImage('assets/images/table.png'),
-    )
-  },
-  {
-    'Kitchen': const ImageIcon(
-      AssetImage('assets/images/kitchen.png'),
-    )
-  },
-  {
-    'Lamp': const ImageIcon(
-      AssetImage('assets/images/lamp.png'),
-    )
-  },
-  {
-    'Cupboard': const ImageIcon(
-      AssetImage('assets/images/cupboard.png'),
-    )
-  },
-  {
-    'Vase': const ImageIcon(
-      AssetImage('assets/images/vase.png'),
-    )
-  },
-  {
-    'Others': const ImageIcon(
-      AssetImage('assets/images/more.png'),
-    )
-  },
-];
+import '../constants/text_strings.dart';
 
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({Key? key}) : super(key: key);
@@ -71,11 +30,11 @@ class CategoriesWidget extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(15),
-                    child: _categoriesList[index].values.first,
+                    child: categoriesList[index].values.first,
                   ),
                 ),
                 Text(
-                  _categoriesList[index].keys.first,
+                  categoriesList[index].keys.first,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
