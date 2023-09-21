@@ -1,9 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:furniture_wala/constants/text_strings.dart';
 
+import '../../constants/text_strings.dart';
+import '../widgets/carousel_slider.dart';
 import '../widgets/categories_view.dart';
+import '../widgets/choice_chips.dart';
 import '../widgets/search_bar.dart';
+import '../widgets/top_title.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home-screen';
@@ -14,10 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _current = 0;
-  final CarouselController _controller = CarouselController();
   int _selectedIndex = 0;
-  int? _value = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -54,157 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 16,
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                child: getTopTitle('Special Offers', 'See All'),
-              ),
+              getTopTitle(tSpecialOffers, tSeeAll),
               const SizedBox(
                 height: 16,
               ),
-              CarouselSlider(
-                carouselController: _controller,
-                options: CarouselOptions(
-                    aspectRatio: 16 / 7,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
-                items: [1, 2, 3, 4, 5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
-                          color: Colors.black12.withOpacity(0.1),
-                        ),
-                        foregroundDecoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
-                          image: DecorationImage(
-                            alignment: Alignment.bottomRight,
-                            fit: BoxFit.fitHeight,
-                            image:
-                                Image.asset('assets/images/pngegg.png').image,
-                          ),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16, 24, 140, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${i * 10}%',
-                                  style: const TextStyle(
-                                    fontSize: 32.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  'Today\'s  Special!',
-                                  style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                // Fixme: A RenderFlex overflowed by 2.3 pixels on the bottom
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  'Get discount for every order, only valid for today',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            )),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: imgList.asMap().entries.map((entry) {
-                  return GestureDetector(
-                    onTap: () => _controller.animateToPage(entry.key),
-                    child: Container(
-                      width: 6.0,
-                      height: 6.0,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 4.0),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Colors.white
-                                  : Colors.black)
-                              .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                    ),
-                  );
-                }).toList(),
-              ),
+              const CarouselSliderWidget(),
               const SizedBox(
                 height: 16,
               ),
               const CategoriesWidget(),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                child: getTopTitle('Most Popular', 'See All'),
-              ),
-              Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Wrap(
-                          spacing: 12,
-                          children: List.generate(
-                            mostPopularCategoriesList.length,
-                            (int index) {
-                              // choice chip allow us to
-                              // set its properties.
-                              return RawChip(
-                                showCheckmark: false,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                label: Text(
-                                  mostPopularCategoriesList[index],
-                                  style: TextStyle(
-                                      color: _value == index
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                selectedColor: Colors.black,
-                                selected: _value == index,
-                                onSelected: (bool selected) {
-                                  setState(() {
-                                    _value = selected ? index : null;
-                                  });
-                                },
-                              );
-                            },
-                          ).toList(),
-                        )
-                      ],
-                    ),
-                  )),
+              getTopTitle(tMostPopular, tSeeAll),
+              const ChoiceChipsWidgets(),
             ],
           ),
         ),
@@ -227,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              title: const Text('Home',
-                  style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text(tabsList[0].keys.first,
+                  style: const TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 0,
               selectedColor: Colors.black,
               textColor: Colors.black12.withOpacity(0.5),
@@ -240,8 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Cart',
-                  style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text(tabsList[1].keys.first,
+                  style: const TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 1,
               selectedColor: Colors.black,
               textColor: Colors.black12.withOpacity(0.5),
@@ -253,8 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Order',
-                  style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text(tabsList[2].keys.first,
+                  style: const TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 2,
               selectedColor: Colors.black,
               textColor: Colors.black12.withOpacity(0.5),
@@ -266,8 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Account',
-                  style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text(tabsList[3].keys.first,
+                  style: const TextStyle(fontWeight: FontWeight.w600)),
               selected: _selectedIndex == 3,
               selectedColor: Colors.black,
               textColor: Colors.black12.withOpacity(0.5),
@@ -286,28 +145,22 @@ class _HomeScreenState extends State<HomeScreen> {
         showUnselectedLabels: true,
         elevation: 24,
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
-            label: 'Home',
+            icon: const Icon(Icons.home_rounded),
+            label: tabsList[0].keys.first,
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/cart.png'),
-            ),
-            label: 'Cart',
+            icon: tabsList[1].values.last,
+            label: tabsList[1].keys.first,
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/order.png'),
-            ),
-            label: 'Order',
+            icon: tabsList[2].values.last,
+            label: tabsList[2].keys.first,
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/account.png'),
-            ),
-            label: 'Account',
+            icon: tabsList[3].values.last,
+            label: tabsList[3].keys.first,
           ),
         ],
         currentIndex: _selectedIndex,
@@ -317,19 +170,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
-
-final List<String> imgList = ['1', '2', '3', '4', '5'];
-
-Widget getTopTitle(String left, String right) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-        left,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-      ),
-      Text(right),
-    ],
-  );
 }
