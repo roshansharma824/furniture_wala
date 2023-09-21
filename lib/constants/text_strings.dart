@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 
 const String tPhoneNumber = 'Code has been send to';
 const String tResendCode = 'Resend code in';
+const String tSeeAll = 'See All';
+const String tSpecialOffers = 'Special Offers';
+const String tMostPopular = 'Most Popular';
 
 // Api
 const String baseUrl = 'https://fm-rating-afghanistan-land.trycloudflare.com/';
@@ -53,6 +56,8 @@ final List<Map<String, ImageIcon>> categoriesList = [
   },
 ];
 
+final List<String> imgList = ['1', '2', '3', '4', '5'];
+
 final List<String> mostPopularCategoriesList = [
   'All',
   'Sofa',
@@ -62,4 +67,27 @@ final List<String> mostPopularCategoriesList = [
   'Lamp',
   'Cupboard',
   'Vase'
+];
+
+final List<Map<String, ImageIcon>> tabsList = [
+  {
+    'Home': const ImageIcon(
+      AssetImage('assets/images/sofa.png'),
+    ),
+  },
+  {
+    'Cart': const ImageIcon(
+      AssetImage('assets/images/cart.png'),
+    ),
+  },
+  {
+    'Order': const ImageIcon(
+      AssetImage('assets/images/order.png'),
+    ),
+  },
+  {
+    'Account': const ImageIcon(
+      AssetImage('assets/images/account.png'),
+    ),
+  }
 ];
