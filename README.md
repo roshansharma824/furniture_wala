@@ -14,10 +14,10 @@ Star⭐ the repo if you like what you see😉.
 - A brain to think 🤓🤓
 
 # 📸 ScreenShots
-| Onboarding                                                           | Home Screen                                                           | Login Screen                                                           | Otp Screen                                                           |
-|----------------------------------------------------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
-| <img src="assets/screenshots/onboarding.png" height=350 width=2000/> | <img src="assets/screenshots/home_screen.png" height=350 width=2000/> | <img src="assets/screenshots/login_screen.png" height=350 width=2000/> | <img src="assets/screenshots/otp_screen.png" height=350 width=2000/> |
+| Onboarding                                                           | Home Screen                                                           | Login Screen                                                           |
+|----------------------------------------------------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------|
+| <img src="assets/screenshots/onboarding.png" height=350 width=2000/> | <img src="assets/screenshots/home_screen.png" height=350 width=2000/> | <img src="assets/screenshots/login_screen.png" height=350 width=2000/> |
 
-| Search Screen                                                           | Drawer Screen                                                           |                                                          
-|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| <img src="assets/screenshots/search_screen.png" height=450 width=2000/> | <img src="assets/screenshots/drawer_screen.png" height=450 width=2000/> |
+| Otp Screen                                                           | Search Screen                                                           | Drawer Screen                                                           |                                                          
+|----------------------------------------------------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| <img src="assets/screenshots/otp_screen.png" height=350 width=2000/> | <img src="assets/screenshots/search_screen.png" height=450 width=2000/> | <img src="assets/screenshots/drawer_screen.png" height=450 width=2000/> |
