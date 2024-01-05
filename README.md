@@ -1,16 +1,17 @@
-# furniture_wala
+# Flutter Furniture Shop
 
-A new Flutter project.
+Flutter representation of a Furniture App Concept i found on Uplabs.
 
-## Getting Started
+Star⭐ the repo if you like what you see😉.
 
-This project is a starting point for a Flutter application.
+[Link to Original Design on Figma](https://www.figma.com/file/PC6xkXCpCpYvW8wj3xrk64/Funica---Furniture-E-Commerce-App-UI-Kit-(Preview)?type=design&node-id=1528-25132&mode=design)
 
-A few resources to get you started if this is your first Flutter project:
+# ✨ Requirements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Any Operating System (ie. MacOS X, Linux, Windows)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
+- A brain to think 🤓🤓
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# 📸 ScreenShots
+
