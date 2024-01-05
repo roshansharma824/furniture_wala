@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:furniture_wala/constants/text_strings.dart';
 import 'package:furniture_wala/data_class/send_otp.dart';
-import 'package:http/http.dart' as http;
 
 import 'otp_screen.dart';
 
@@ -37,23 +34,27 @@ class _LoginScreenState extends State<LoginScreen> {
     _controller = TextEditingController();
   }
 
-  Future<SendOtp> sendOtp() async {
-    var url = Uri.parse('${baseUrl}SendOtp');
+  Future<SendOtp?> sendOtp() async {
+    // var url = Uri.parse('${baseUrl}SendOtp');
 
-    final response = await http.post(url, body: {"phone": _phone});
+    // final response = await http.post(url, body: {"phone": _phone});
+    //
+    // if (response.statusCode == 201) {
+    //   // If the server did return a 201 OK response,
+    //   // then parse the JSON.
+    //   SendOtp sendOtp = SendOtp.fromJson(json.decode(response.body));
+    //   print(sendOtp.toJson());
+    //   _isLoading = true;
+    //   return sendOtp;
+    // } else {
+    //   _isLoading = true;
+    //   // If the server did not return a 201 OK response,
+    //   // then throw an exception.
+    //   // throw Exception('Failed to send otp');
+    // }
+    _isLoading = true;
 
-    if (response.statusCode == 201) {
-      // If the server did return a 201 OK response,
-      // then parse the JSON.
-      SendOtp sendOtp = SendOtp.fromJson(json.decode(response.body));
-      print(sendOtp.toJson());
-      _isLoading = false;
-      return sendOtp;
-    } else {
-      // If the server did not return a 201 OK response,
-      // then throw an exception.
-      throw Exception('Failed to send otp');
-    }
+    return null;
   }
 
   @override
