@@ -1,6 +1,6 @@
 # Flutter Furniture Shop
 
-Flutter representation of a Furniture App Concept i found on Uplabs.
+Flutter representation of a Furniture App Concept i found on Figma.
 
 Star⭐ the repo if you like what you see😉.
 
