@@ -3,7 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:furniture_wala/data_class/verify_otp_response.dart';
 
 import '../../constants/text_strings.dart';
-import '../../main.dart';
+import 'home_screen.dart';
 
 class OtpScreen extends StatefulWidget {
   static const String routeName = '/otp-screen';
@@ -156,7 +156,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const MyApp()),
+                                builder: (context) => const HomeScreen()),
                           );
                         }
                       }
