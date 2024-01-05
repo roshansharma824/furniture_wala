@@ -16,8 +16,8 @@ Star⭐ the repo if you like what you see😉.
 # 📸 ScreenShots
 | Onboarding                                                           | Home Screen                                                           | Login Screen                                                           |
 |----------------------------------------------------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------|
-| <img src="assets/screenshots/onboarding.png" height=650 width=2000/> | <img src="assets/screenshots/home_screen.png" height=650 width=2000/> | <img src="assets/screenshots/login_screen.png" height=650 width=2000/> |
+| <img src="assets/screenshots/onboarding.png" height=550 width=2000/> | <img src="assets/screenshots/home_screen.png" height=550 width=2000/> | <img src="assets/screenshots/login_screen.png" height=550 width=2000/> |
 
 | Otp Screen                                                           | Search Screen                                                           | Drawer Screen                                                           |                                                          
 |----------------------------------------------------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| <img src="assets/screenshots/otp_screen.png" height=650 width=2000/> | <img src="assets/screenshots/search_screen.png" height=650 width=2000/> | <img src="assets/screenshots/drawer_screen.png" height=650 width=2000/> |
+| <img src="assets/screenshots/otp_screen.png" height=550 width=2000/> | <img src="assets/screenshots/search_screen.png" height=550 width=2000/> | <img src="assets/screenshots/drawer_screen.png" height=550 width=2000/> |
