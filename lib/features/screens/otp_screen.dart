@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:furniture_wala/data_class/verify_otp_response.dart';
-import 'package:http/http.dart' as http;
 
 import '../../constants/text_strings.dart';
 import '../../main.dart';
@@ -37,26 +34,28 @@ class _OtpScreenState extends State<OtpScreen> {
     _controller = TextEditingController();
   }
 
-  Future<VerifyOtpResponse> verifyOtp() async {
-    var url = Uri.parse('${baseUrl}VerifyOtp');
+  Future<VerifyOtpResponse?> verifyOtp() async {
+    return null;
 
-    print(_otp);
-
-    final response =
-        await http.post(url, body: {"phone": widget.phone, "otp": _otp});
-
-    if (response.statusCode == 201) {
-      // If the server did return a 201 OK response,
-      // then parse the JSON.
-      VerifyOtpResponse verifyOtpResponse =
-          VerifyOtpResponse.fromJson(json.decode(response.body));
-      print(verifyOtpResponse.toJson());
-      return verifyOtpResponse;
-    } else {
-      // If the server did not return a 201 OK response,
-      // then throw an exception.
-      throw Exception('Failed to verify otp');
-    }
+    // var url = Uri.parse('${baseUrl}VerifyOtp');
+    //
+    // print(_otp);
+    //
+    // final response =
+    //     await http.post(url, body: {"phone": widget.phone, "otp": _otp});
+    //
+    // if (response.statusCode == 201) {
+    //   // If the server did return a 201 OK response,
+    //   // then parse the JSON.
+    //   VerifyOtpResponse verifyOtpResponse =
+    //       VerifyOtpResponse.fromJson(json.decode(response.body));
+    //   print(verifyOtpResponse.toJson());
+    //   return verifyOtpResponse;
+    // } else {
+    //   // If the server did not return a 201 OK response,
+    //   // then throw an exception.
+    //   throw Exception('Failed to verify otp');
+    // }
   }
 
   @override

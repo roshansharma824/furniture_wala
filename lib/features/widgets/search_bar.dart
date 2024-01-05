@@ -50,14 +50,13 @@ class SearchBarWidget extends StatelessWidget {
 class CustomSearchDelegate extends SearchDelegate {
 // Demo list to show querying
   List<String> searchTerms = [
-    "Apple",
-    "Banana",
-    "Mango",
-    "Pear",
-    "Watermelons",
-    "Blueberries",
-    "Pineapples",
-    "Strawberries"
+    "Sofa",
+    "Chair",
+    "Table",
+    "Kitchen",
+    "Lamp",
+    "Cupboard",
+    "Vase",
   ];
 
 // first overwrite to
